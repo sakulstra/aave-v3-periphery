@@ -66,7 +66,7 @@ abstract contract BaseParaSwapSellAdapter is BaseParaSwapAdapter {
     }
 
     uint256 balanceBeforeAssetFrom = assetToSwapFrom.balanceOf(address(this));
-    if (balanceBeforeAssetFrom < amountToSwap && amountToSwap - balanceBeforeAssetFrom < ALLOWED_IMPRECISION) {
+    if (balanceBeforeAssetFrom < amountToSwap && amountToSwap - balanceBeforeAssetFrom <= ALLOWED_IMPRECISION) {
       amountToSwap = balanceBeforeAssetFrom;
     }
     require(balanceBeforeAssetFrom >= amountToSwap, 'INSUFFICIENT_BALANCE_BEFORE_SWAP');

@@ -68,7 +68,7 @@ abstract contract BaseParaSwapBuyAdapter is BaseParaSwapAdapter {
     }
 
     uint256 balanceBeforeAssetFrom = assetToSwapFrom.balanceOf(address(this));
-    if (balanceBeforeAssetFrom < maxAmountToSwap && maxAmountToSwap - balanceBeforeAssetFrom < ALLOWED_IMPRECISION) {
+    if (balanceBeforeAssetFrom < maxAmountToSwap && maxAmountToSwap - balanceBeforeAssetFrom <= ALLOWED_IMPRECISION) {
       maxAmountToSwap = balanceBeforeAssetFrom;
     }
     require(balanceBeforeAssetFrom >= maxAmountToSwap, 'INSUFFICIENT_BALANCE_BEFORE_SWAP');
